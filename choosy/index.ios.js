@@ -9,24 +9,48 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TabBarIOS
 } from 'react-native';
 
+import {Welcome} from './welcome.ios';
+import {More} from './more.ios';
+
 export default class choosy extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedTab: 'welcome'
+    };
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <TabBarIOS selectedTab={this.state.selectedTab}>
+        <TabBarIOS.Item
+          selected={this.state.selectedTab === 'welcome'}
+          systemIcon="featured"
+          onPress={() => {
+              this.setState({
+                  selectedTab: 'welcome',
+              });
+          }}>
+            <Text style={styles.instructions}>
+                Tab 1
+            </Text>
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          selected={this.state.selectedTab === 'more'}
+          systemIcon="contacts"
+          onPress={() => {
+                this.setState({
+                    selectedTab: 'more',
+                });
+          }}>
+            <Text style={styles.instructions}>
+                Tab 2
+            </Text>
+        </TabBarIOS.Item>
+      </TabBarIOS>
     );
   }
 }
@@ -47,6 +71,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+    marginTop: 40
   },
 });
 

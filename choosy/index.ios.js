@@ -1,20 +1,10 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TabBarIOS
+  StyleSheet
 } from 'react-native';
 
-import {Welcome} from './welcome.ios';
-import {More} from './more.ios';
+import Navigation from './components/navigation/index';
 
 export default class choosy extends Component {
   constructor(props) {
@@ -25,54 +15,9 @@ export default class choosy extends Component {
   }
   render() {
     return (
-      <TabBarIOS selectedTab={this.state.selectedTab}>
-        <TabBarIOS.Item
-          selected={this.state.selectedTab === 'welcome'}
-          systemIcon="featured"
-          onPress={() => {
-              this.setState({
-                  selectedTab: 'welcome',
-              });
-          }}>
-            <Text style={styles.instructions}>
-                Tab 1
-            </Text>
-        </TabBarIOS.Item>
-        <TabBarIOS.Item
-          selected={this.state.selectedTab === 'more'}
-          systemIcon="contacts"
-          onPress={() => {
-                this.setState({
-                    selectedTab: 'more',
-                });
-          }}>
-            <Text style={styles.instructions}>
-                Tab 2
-            </Text>
-        </TabBarIOS.Item>
-      </TabBarIOS>
+      <Navigation />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-    marginTop: 40
-  },
-});
 
 AppRegistry.registerComponent('choosy', () => choosy);

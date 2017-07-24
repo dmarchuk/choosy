@@ -27,7 +27,7 @@ class Welcome extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.description}>
-          Welcome to your React Native Start Component!
+          Here will be a search component!
         </Text>
       </View>
     );

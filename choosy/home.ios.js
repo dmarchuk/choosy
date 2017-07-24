@@ -26,7 +26,7 @@ class More extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.description}>
-          This could be your second tab
+          Here is supposed to be Home/Feed.
         </Text>
       </View>
     );

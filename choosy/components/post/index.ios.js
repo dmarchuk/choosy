@@ -12,7 +12,7 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-var styles = StyleSheet.create({
+let styles = StyleSheet.create({
     container: {backgroundColor: 'white', paddingTop: 10},
     image: {borderRadius: 20, width: 40, height: 40, marginHorizontal: 3, marginVertical: 3},
     infoContainer: {flexDirection: 'row', height: 45, alignSelf: 'stretch'},
@@ -50,6 +50,7 @@ export default class Post extends Component {
         return (
             <View style={styles.container}>
 
+                {/* Info container (profile image, username, location?) */}
                 <View style={styles.infoContainer}>
                     <Image source={{uri: 'https://s-media-cache-ak0.pinimg.com/736x/d1/52/44/d15244cef95c4e8e865b1326d9c01d67--alexis-ren-instagram-i-smile.jpg'}}
                            style={styles.image}
@@ -60,6 +61,7 @@ export default class Post extends Component {
                     </View>
                 </View>
 
+                {/* Image */}
                 <TouchableOpacity onPress={this.doubleTap} activeOpacity={1}>
                     <Image
                         style={{height: width}}
@@ -68,6 +70,7 @@ export default class Post extends Component {
                     />
                 </TouchableOpacity>
 
+                {/* Comment and share buttons */}
                 <View style={styles.itemImageContainer}>
                     <TouchableOpacity style={styles.comment} onPress={() => alert('Comment')}>
                         <Icon name="comment" size={30} color="black"/>
@@ -79,6 +82,7 @@ export default class Post extends Component {
 
                 <View style={styles.seperator}/>
 
+                {/* More info about the post */}
                 <View style={styles.footer}>
                     <View style={styles.likeCount}>
                         <Icon name="touch-app" size={12} color="black"/>

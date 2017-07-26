@@ -7,6 +7,7 @@ import {
   View
 } from 'react-native';
 
+
 var styles = StyleSheet.create({
   description: {
     fontSize: 20,
@@ -17,20 +18,20 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#765432',
+    backgroundColor: '#123456',
   }
 });
 
-class More extends Component {
+export default class Search extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.description}>
-          Here is supposed to be Home/Feed.
+          Here will be a search component!
         </Text>
       </View>
     );
   }
 }
 
-module.exports = More;
+module.exports = Search;

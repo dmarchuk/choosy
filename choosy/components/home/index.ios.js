@@ -4,31 +4,26 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 
-var styles = StyleSheet.create({
-  description: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: '#FFFFFF'
-  },
+import Post from '../post/index.ios';
+
+let styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#765432',
+    backgroundColor: '#FFF'
   }
 });
 
 export default class Home extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.description}>
-          Here is supposed to be Home/Feed.
-        </Text>
-      </View>
+      <ScrollView style={styles.container}>
+        <Post/>
+        <Post/>
+        <Post/>
+      </ScrollView>
     );
   }
 }

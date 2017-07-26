@@ -6,8 +6,8 @@ import {
     TabBarIOS
 } from 'react-native';
 
-import Welcome from '../../home';
-import Search from '../../search';
+import Home from '../home/index.ios';
+import Search from '../search/index.ios';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -35,7 +35,7 @@ class Navigation extends Component {
                             selectedTab: 'home',
                         });
                     }}>
-                    <Welcome />
+                    <Home />
                 </Icon.TabBarItemIOS>
 
                 <Icon.TabBarItemIOS

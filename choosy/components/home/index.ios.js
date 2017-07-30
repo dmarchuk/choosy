@@ -1,31 +1,22 @@
 'use strict';
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView
+    ScrollView
 } from 'react-native';
 
 import Post from '../post/index.ios';
 
-let styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#FFF'
-  }
-});
-
 export default class Home extends Component {
-  render() {
-    return (
-      <ScrollView style={styles.container}>
-        <Post/>
-        <Post/>
-        <Post/>
-      </ScrollView>
-    );
-  }
+    render() {
+        return (
+            <ScrollView>
+                <Post choices="3" />
+                <Post choices="2" />
+                <Post choices="4" />
+            </ScrollView>
+        );
+    }
 }
 
 module.exports = Home;

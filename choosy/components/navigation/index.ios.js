@@ -15,7 +15,7 @@ class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'home'
+            selectedTab: 'search'
         };
     }
     render() {
@@ -42,10 +42,10 @@ class Navigation extends Component {
                     title="Search"
                     iconName="search"
                     selectedIconName="search"
-                    selected={this.state.selectedTab === 'more'}
+                    selected={this.state.selectedTab === 'search'}
                     onPress={() => {
                         this.setState({
-                            selectedTab: 'more',
+                            selectedTab: 'search',
                         });
                     }}>
                     <Search />

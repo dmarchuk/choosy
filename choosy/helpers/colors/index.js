@@ -2,6 +2,7 @@
 let colors = {
     highReflectiveWhite: '#f8f9f3',
     stBarts: '#5c808b',
+    realRed: '#c6222f',
     armagnac: '#c48757',
     tricornBlack: '#2d2d2e',
     inTheNavy: '#283849',

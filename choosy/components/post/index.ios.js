@@ -34,7 +34,7 @@ export default class Post extends Component {
             let mockedVoteCount = parseInt(this.props.choices) * (i + 1 + 13);
             let mockedCommentCount = parseInt(this.props.choices) * (i + 1 + 3);
             choices.push(
-                <Choice key={i} image="https://unsplash.it/400/400/?random" votedCount={mockedVoteCount} commentCount={mockedCommentCount} />
+                <Choice key={i} image="https://dummyimage.com/400x400/c62230/ffffff" votedCount={mockedVoteCount} commentCount={mockedCommentCount} />
             )
         }
 

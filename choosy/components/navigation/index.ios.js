@@ -15,7 +15,7 @@ class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'search'
+            selectedTab: 'home'
         };
     }
     render() {

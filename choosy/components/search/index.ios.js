@@ -10,6 +10,9 @@ import {
 } from 'react-native';
 
 import SearchBar from '../../node_modules/react-native-search-bar';
+import ScrollableTabView, {DefaultTabBar} from '../../node_modules/react-native-scrollable-tab-view';
+import UsersSearchList from './users.ios';
+import renderIf from '../../helpers/renderif';
 
 const {width, height} = Dimensions.get('window');
 
@@ -39,7 +42,8 @@ export default class Search extends Component {
 
         // Hide cancel button by default
         this.state = {
-            showsCancelButton: false
+            showsCancelButton: false,
+            showResults: false
         };
         this.showCancelButton = this.showCancelButton.bind(this);
     }
@@ -47,11 +51,12 @@ export default class Search extends Component {
     showCancelButton() {
         this.setState({
             showsCancelButton: true,
+            showResults: true
         });
     }
 
     render() {
-        // Mocking post images
+        // TODO: Mocking post images, should be changed to getting data from https://randomuser.me/api/?results=50
         let mockedImages = [];
         for (let i = 0; i < 50; i++) {
             mockedImages.push(
@@ -63,20 +68,40 @@ export default class Search extends Component {
                 />
             )
         }
+
         return (
             <View style={styles.container}>
                 <SearchBar
                     placeholder='Search'
                     onFocus={this.showCancelButton}
+                    onBlur={() => this.setState({
+                        showResults: false
+                    })}
                     showsCancelButton={this.state.showsCancelButton}
                     searchBarStyle="minimal"
                     tintColor="black"
                 />
 
-                {/* Here is supposed to be list of posts in "discovery" */}
-                <ScrollView contentContainerStyle={styles.postsWrapper} automaticallyAdjustContentInsets={false} contentInset={{bottom: 50}}>
-                    {mockedImages}
-                </ScrollView>
+                {/* Here is supposed to be list of posts in "discovery", showing depending on state.showResults */}
+                {renderIf(!this.state.showResults,
+                    <ScrollView contentContainerStyle={styles.postsWrapper} automaticallyAdjustContentInsets={false} contentInset={{bottom: 50}}>
+                        {mockedImages}
+                    </ScrollView>
+                )}
+
+                {/* Results of search tabbed content, showing depending on state.showResults */}
+                {renderIf(this.state.showResults,
+                    <ScrollableTabView
+                        style={{marginTop: 0, padding: 0, height: 10}}
+                        renderTabBar={() => <DefaultTabBar style={{padding: 0, height: 35}} />}
+                    >
+                        <UsersSearchList tabLabel='Top' />
+                        <UsersSearchList tabLabel='People' />
+                        <UsersSearchList tabLabel='Categories' />
+                        <UsersSearchList tabLabel='Tags' />
+                    </ScrollableTabView>
+                )}
+
             </View>
         );
     }

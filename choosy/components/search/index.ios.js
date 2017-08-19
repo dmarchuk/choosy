@@ -74,9 +74,6 @@ export default class Search extends Component {
                 <SearchBar
                     placeholder='Search'
                     onFocus={this.showCancelButton}
-                    onBlur={() => this.setState({
-                        showResults: false
-                    })}
                     showsCancelButton={this.state.showsCancelButton}
                     searchBarStyle="minimal"
                     tintColor="black"

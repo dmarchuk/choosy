@@ -68,6 +68,8 @@ class UsersSearchList extends Component {
     return (
         <FlatList
           data={this.state.data}
+          keyboardDismissMode='on-drag'
+          keyboardShouldPersistTaps='never'
           renderItem={({ item }) => (
               // TODO: Make a separate component
               <View style={styles.infoContainer}>

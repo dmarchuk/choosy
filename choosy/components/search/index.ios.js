@@ -72,8 +72,13 @@ export default class Search extends Component {
         return (
             <View style={styles.container}>
                 <SearchBar
+                    ref='searchBar'
                     placeholder='Search'
                     onFocus={this.showCancelButton}
+                    onSearchButtonPress={() => this.refs.searchBar.unFocus()}
+                    onCancelButtonPress={() => this.setState({
+                         showResults: false
+                    })}
                     showsCancelButton={this.state.showsCancelButton}
                     searchBarStyle="minimal"
                     tintColor="black"
@@ -91,6 +96,8 @@ export default class Search extends Component {
                     <ScrollableTabView
                         style={{marginTop: 0, padding: 0, height: 10}}
                         renderTabBar={() => <DefaultTabBar style={{padding: 0, height: 35}} />}
+                        // keyboardDismissMode="on-drag"
+                        // keyboardShouldPersistTaps={true}
                     >
                         <UsersSearchList tabLabel='Top' />
                         <UsersSearchList tabLabel='People' />

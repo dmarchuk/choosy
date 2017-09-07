@@ -10,6 +10,7 @@ import {
 
 import Choice from '../choice/index.ios';
 import Swiper from '../../node_modules/react-native-swiper';
+import settings from '../../helpers/settings/index';
 
 let styles = StyleSheet.create({
     // Post information + user info
@@ -25,18 +26,20 @@ let styles = StyleSheet.create({
 export default class Post extends Component {
     constructor(props) {
         super(props);
+
+        this.item = this.props.props;
     }
 
     render() {
-        // Mocked data generation, unsplash is generating random images for us
         let choices = [];
-        for (let i = 0; i < parseInt(this.props.choices); i++) {
-            let mockedVoteCount = parseInt(this.props.choices) * (i + 1 + 13);
-            let mockedCommentCount = parseInt(this.props.choices) * (i + 1 + 3);
+
+        this.item.images.map((choice) => {
+            let imageUrl = settings.API_URL + choice.compressed;
             choices.push(
-                <Choice key={i} image="https://dummyimage.com/400x400/c62230/ffffff" votedCount={mockedVoteCount} commentCount={mockedCommentCount} />
+                // post attribute is temporary
+                <Choice key={choice.id} image={imageUrl} votedCount={this.item.likes.length} commentCount={this.item.comments.length} />
             )
-        }
+        });
 
         return (
             <View>
@@ -46,8 +49,8 @@ export default class Post extends Component {
                            style={styles.image}
                     />
                     <View style={styles.usernameContainer}>
-                        <Text> Username </Text>
-                        <Text style={styles.location}> Prague </Text>
+                        <Text> {this.item._id} </Text>
+                        <Text style={styles.location}> {this.item.created_at} </Text>
                     </View>
                 </View>
 

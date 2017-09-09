@@ -1,107 +1,56 @@
 import React, { Component } from 'react';
-import {
-    StyleSheet,
-    Text,
-    View,
-    TabBarIOS
-} from 'react-native';
+
+import { TabNavigator } from 'react-navigation';
 
 import Home from '../home/index.ios';
 import Search from '../search/index.ios';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-class Navigation extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedTab: 'home'
-        };
+import colors from '../../helpers/colors/index';
+
+export const Navigation = TabNavigator({
+    Home: {
+        screen: Home,
+        navigationOptions: {
+            tabBarLabel: 'Home',
+            tabBarIcon: ({tintColor}) => <Icon name="home" size={35} color={tintColor}/>,
+        },
+    },
+    Search: {
+        screen: Search,
+        navigationOptions: {
+            tabBarLabel: 'Search',
+            tabBarIcon: ({tintColor}) => <Icon name="search" size={35} color={tintColor}/>
+        },
+    },
+    Create: {
+        screen: Search,
+        navigationOptions: {
+            tabBarLabel: 'Create',
+            tabBarIcon: ({tintColor}) => <Icon name="add" size={35} color={colors.armagnac} />
+        },
+    },
+    Voted: {
+        screen: Search,
+        navigationOptions: {
+            tabBarLabel: 'Voted',
+            tabBarIcon: ({tintColor}) => <Icon name="touch-app" size={35} color={tintColor}/>
+        },
+    },
+    Profile: {
+        screen: Search,
+        navigationOptions: {
+            tabBarLabel: 'Profile',
+            tabBarIcon: ({tintColor}) => <Icon name="person" size={35} color={tintColor}/>
+        },
+    },
+}, {
+        tabBarPosition: 'bottom',
+        tabBarOptions: {
+            activeTintColor: colors.realRed,
+        }
     }
-    render() {
-        return (
-            <TabBarIOS
-                tintColor="black"
-                // barTintColor=""
-                selectedTab={this.state.selectedTab}>
-
-                <Icon.TabBarItemIOS
-                    title="Home"
-                    iconName="home"
-                    selectedIconName="home"
-                    selected={this.state.selectedTab === 'home'}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: 'home',
-                        });
-                    }}>
-                    <Home />
-                </Icon.TabBarItemIOS>
-
-                <Icon.TabBarItemIOS
-                    title="Search"
-                    iconName="search"
-                    selectedIconName="search"
-                    selected={this.state.selectedTab === 'search'}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: 'search',
-                        });
-                    }}>
-                    <Search />
-                </Icon.TabBarItemIOS>
-
-                 <Icon.TabBarItemIOS
-                    title="Create"
-                    iconName="add"
-                    iconColor="green"
-                    selectedIconColor="green"
-                    selectedIconName="add"
-                    renderAsOriginal={true}
-                    >
-                    <Search />
-                </Icon.TabBarItemIOS>
-
-                <Icon.TabBarItemIOS
-                    title="Voted"
-                    iconName="touch-app"
-                    selectedIconName="touch-app"
-                    >
-                    <Search />
-                </Icon.TabBarItemIOS>
-
-                <Icon.TabBarItemIOS
-                    title="Profile"
-                    iconName="person"
-                    selectedIconName="person"
-                    >
-                    <Search />
-                </Icon.TabBarItemIOS>
-
-
-            </TabBarIOS>
-        );
-    }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-    marginTop: 40
-  },
-});
+);
 
 module.exports = Navigation;

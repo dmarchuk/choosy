@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import colors from '../../helpers/colors/index';
 
-export const Navigation = TabNavigator({
+export const Tabs = TabNavigator({
     Home: {
         screen: Home,
         navigationOptions: {
@@ -52,5 +52,3 @@ export const Navigation = TabNavigator({
         }
     }
 );
-
-module.exports = Navigation;

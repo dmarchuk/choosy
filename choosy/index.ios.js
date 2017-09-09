@@ -4,18 +4,15 @@ import {
   StyleSheet
 } from 'react-native';
 
-import Navigation from './components/navigation/index';
+import { Tabs } from './components/navigation/index';
 
 export default class choosy extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedTab: 'welcome'
-    };
   }
   render() {
     return (
-      <Navigation />
+      <Tabs />
     );
   }
 }

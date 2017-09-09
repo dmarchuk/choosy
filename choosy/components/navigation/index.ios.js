@@ -39,41 +39,44 @@ export const Tabs = TabNavigator({
         screen: FeedStack,
         navigationOptions: {
             tabBarLabel: 'Home',
-            tabBarIcon: ({tintColor}) => <Icon name="home" size={35} color={tintColor}/>,
+            tabBarIcon: ({tintColor}) => <Icon name="home" size={25} color={tintColor}/>,
         },
     },
     Search: {
         screen: Search,
         navigationOptions: {
             tabBarLabel: 'Search',
-            tabBarIcon: ({tintColor}) => <Icon name="search" size={35} color={tintColor}/>
+            tabBarIcon: ({tintColor}) => <Icon name="search" size={25} color={tintColor}/>
         },
     },
     Create: {
         screen: Search,
         navigationOptions: {
             tabBarLabel: 'Create',
-            tabBarIcon: ({tintColor}) => <Icon name="add" size={35} color={colors.armagnac} />
+            tabBarIcon: ({tintColor}) => <Icon name="add" size={25} color={colors.armagnac} />
         },
     },
     Voted: {
         screen: Search,
         navigationOptions: {
             tabBarLabel: 'Voted',
-            tabBarIcon: ({tintColor}) => <Icon name="touch-app" size={35} color={tintColor}/>
+            tabBarIcon: ({tintColor}) => <Icon name="touch-app" size={25} color={tintColor}/>
         },
     },
     Profile: {
         screen: Search,
         navigationOptions: {
             tabBarLabel: 'Profile',
-            tabBarIcon: ({tintColor}) => <Icon name="person" size={35} color={tintColor}/>
+            tabBarIcon: ({tintColor}) => <Icon name="person" size={25} color={tintColor}/>
         },
     },
 }, {
         tabBarPosition: 'bottom',
         tabBarOptions: {
             activeTintColor: colors.realRed,
+            style: {
+                height: 40
+            }
         }
     }
 );

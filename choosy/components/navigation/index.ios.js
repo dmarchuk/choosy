@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import { TabNavigator } from 'react-navigation';
+import { Image, StyleSheet } from 'react-native';
+
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
 import Home from '../home/index.ios';
 import Search from '../search/index.ios';
@@ -9,9 +11,32 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import colors from '../../helpers/colors/index';
 
-export const Tabs = TabNavigator({
+const styles = StyleSheet.create({
+    logo: {
+        flex: 1,
+        width: 100,
+        resizeMode: 'contain'
+    }
+});
+
+
+export const FeedStack = StackNavigator({
     Home: {
         screen: Home,
+        navigationOptions: {
+            headerTitle: (
+                <Image source={require('../../assets/img/logo/logo.png')} style={styles.logo} />
+            ),
+            headerStyle: {
+                height: 55
+            }
+        }
+    }
+});
+
+export const Tabs = TabNavigator({
+    Home: {
+        screen: FeedStack,
         navigationOptions: {
             tabBarLabel: 'Home',
             tabBarIcon: ({tintColor}) => <Icon name="home" size={35} color={tintColor}/>,

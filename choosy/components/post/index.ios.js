@@ -27,17 +27,16 @@ export default class Post extends Component {
     constructor(props) {
         super(props);
 
-        this.item = this.props.props;
+        this.post = this.props.props;
     }
 
     render() {
         let choices = [];
 
-        this.item.images.map((choice) => {
-            let imageUrl = settings.API_URL + choice.compressed;
+        this.post.items.map((choice) => {
+            let imageUrl = settings.API_URL + choice.images.compressed;
             choices.push(
-                // post attribute is temporary
-                <Choice key={choice.id} image={imageUrl} votedCount={this.item.likes.length} commentCount={this.item.comments.length} />
+                <Choice key={choice._id} image={imageUrl} votedCount={choice.votes.length} commentCount={this.post.comments.length} />
             )
         });
 
@@ -49,8 +48,8 @@ export default class Post extends Component {
                            style={styles.image}
                     />
                     <View style={styles.usernameContainer}>
-                        <Text> {this.item._id} </Text>
-                        <Text style={styles.location}> {this.item.created_at} </Text>
+                        <Text> {this.post._id} </Text>
+                        <Text style={styles.location}> {this.post.created_at} </Text>
                     </View>
                 </View>
 

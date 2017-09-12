@@ -7,10 +7,11 @@ import {
     View,
     Image,
     TouchableOpacity,
-    Dimensions
+    Dimensions,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import settings from '../../helpers/settings/index';
 
 let styles = StyleSheet.create({
     // Container of postInfo (post block under the image containing all action buttons and information about the post item)
@@ -35,15 +36,17 @@ export default class Choice extends Component {
     constructor(props) {
         super(props);
         this.doubleTap = this.doubleTap.bind(this);
+        this.likePost = this.likePost.bind(this);
 
         this.state = {
-            lastPress: 0
+            lastPress: 0,
+            votedCount: this.props.votedCount
         }
     }
 
     render() {
         return (
-            <View style={styles.container}>
+            <View>
                 {/* Image */}
                 <TouchableOpacity onPress={this.doubleTap} activeOpacity={1}>
                     <Image
@@ -56,7 +59,7 @@ export default class Choice extends Component {
                 {/* Comment and share buttons */}
                 <View style={styles.postInfoContainer}>
                     <View style={styles.actions}>
-                        <TouchableOpacity style={styles.vote} onPress={() => alert('Voted')}>
+                        <TouchableOpacity style={styles.vote} onPress={() => this.likePost(this.props.id)}>
                             <Icon name="touch-app" size={30} color="black"/>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.comment} onPress={() => alert('Comment')}>
@@ -71,10 +74,10 @@ export default class Choice extends Component {
                     <View style={styles.info}>
                         <View style={styles.voteCount}>
                             <Icon name="touch-app" size={16} color="black"/>
-                            <Text style={styles.voteText}> {this.props.votedCount} voted </Text>
+                            <Text style={styles.voteText}> {this.state.votedCount} voted</Text>
                         </View>
                         <TouchableOpacity onPress={() => alert('Comments list')}>
-                            <Text style={styles.commentText}> {this.props.commentCount} comments </Text>
+                            <Text style={styles.commentText}> {this.props.commentCount} comments</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -82,15 +85,34 @@ export default class Choice extends Component {
         );
     }
 
+    likePost(id) {
+        // Temporary solution to check whether the user already voted on this post or not
+        // alreadyVoted is a prop passed from 'Post' component
+        if(!this.props.alreadyVoted) {
+            let url = settings.API_URL + `/post/vote/${this.props.post_id}/${id}`;
+            fetch(url, {method: "POST"})
+                .then((response) => response.json())
+                .then(() => {
+                    this.setState({
+                        votedCount: this.state.votedCount + 1
+                    });
+                    // Handler from 'Post' component, changes prop alreadyVoted to true
+                    this.props.voteHandler();
+                })
+                .done();
+        } else {
+            alert('You already voted on this post.');
+        }
+    }
+
     doubleTap() {
         let delta = new Date().getTime() - this.state.lastPress;
         if (delta < 500) {
-            //DoubleTap
+            // DoubleTap
             this.setState({
-                lastPress: new Date().getTime()
+                lastPress: new Date().getTime(),
             });
-            // LayoutAnimation.easeInEaseOut();
-            alert('Voted count: ' + this.props.votedCount);
+            this.likePost(this.props.id);
             return;
         }
         this.setState({

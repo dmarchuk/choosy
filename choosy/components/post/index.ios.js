@@ -27,7 +27,18 @@ export default class Post extends Component {
     constructor(props) {
         super(props);
 
+         this.voteHandler = this.voteHandler.bind(this);
+
         this.post = this.props.props;
+        this.state = {
+            alreadyVoted: false
+        }
+    }
+
+    voteHandler() {
+        this.setState({
+            alreadyVoted: true
+        });
     }
 
     render() {
@@ -36,7 +47,9 @@ export default class Post extends Component {
         this.post.items.map((choice) => {
             let imageUrl = settings.API_URL + choice.images.compressed;
             choices.push(
-                <Choice key={choice._id} image={imageUrl} votedCount={choice.votes.length} commentCount={this.post.comments.length} />
+                <Choice key={choice._id} id={choice._id} post_id={this.post._id} image={imageUrl}
+                        alreadyVoted={this.state.alreadyVoted} voteHandler={this.voteHandler}
+                        votedCount={choice.votes.length} commentCount={this.post.comments.length} />
             )
         });
 

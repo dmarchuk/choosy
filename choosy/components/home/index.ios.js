@@ -60,6 +60,18 @@ export default class Home extends Component {
             });
     };
 
+    handleRefresh = () => {
+        this.setState(
+            {
+                seed: this.state.seed + 1,
+                refreshing: true
+            },
+            () => {
+                this.makeRemoteRequest();
+            }
+        );
+    };
+
     render() {
         return (
             <View>
@@ -76,6 +88,8 @@ export default class Home extends Component {
                                 <Post props={item} />
                             </View>
                         )}
+                        onRefresh={this.handleRefresh}
+                        refreshing={this.state.refreshing}
                         keyExtractor={item => item._id}
                         ItemSeparatorComponent={this.renderSeparator}
                         contentInset={{bottom: 50, top: 20}}

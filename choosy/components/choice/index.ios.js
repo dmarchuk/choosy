@@ -92,9 +92,9 @@ export default class Choice extends Component {
             let url = settings.API_URL + `/post/vote/${this.props.post_id}/${id}`;
             fetch(url, {method: "POST"})
                 .then((response) => response.json())
-                .then(() => {
+                .then((res) => {
                     this.setState({
-                        votedCount: this.state.votedCount + 1
+                        votedCount: res.data
                     });
                     // Handler from 'Post' component, changes prop alreadyVoted to true
                     this.props.voteHandler();

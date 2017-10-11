@@ -6,6 +6,7 @@ import { TabNavigator, StackNavigator } from 'react-navigation';
 
 import Home from '../home/index.ios';
 import Search from '../search/index.ios';
+import Upload from '../upload/index.ios';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -50,14 +51,14 @@ export const Tabs = TabNavigator({
         },
     },
     Create: {
-        screen: Search,
+        screen: Upload,
         navigationOptions: {
             tabBarLabel: 'Create',
             tabBarIcon: ({tintColor}) => <Icon name="add" size={25} color={colors.armagnac} />
         },
     },
     Voted: {
-        screen: Search,
+        screen: Upload,
         navigationOptions: {
             tabBarLabel: 'Voted',
             tabBarIcon: ({tintColor}) => <Icon name="touch-app" size={25} color={tintColor}/>

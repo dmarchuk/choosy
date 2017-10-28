@@ -7,6 +7,7 @@ import { TabNavigator, StackNavigator } from 'react-navigation';
 import Home from '../home/index.ios';
 import Search from '../search/index.ios';
 import Upload from '../upload/index.ios';
+import Create from "../create/index.ios";
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -51,7 +52,7 @@ export const Tabs = TabNavigator({
         },
     },
     Create: {
-        screen: Upload,
+        screen: Create,
         navigationOptions: {
             tabBarLabel: 'Create',
             tabBarIcon: ({tintColor}) => <Icon name="add" size={25} color={colors.armagnac} />

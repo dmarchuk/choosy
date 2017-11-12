@@ -8,6 +8,7 @@ import Home from '../home/index.ios';
 import Search from '../search/index.ios';
 import Upload from '../upload/index.ios';
 import Create from "../create/index.ios";
+import Picker from "../picker/index.ios";
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -33,7 +34,18 @@ export const FeedStack = StackNavigator({
                 height: 55
             }
         }
-    }
+    },
+    Picker: {
+        screen: Picker,
+        navigationOptions: {
+            headerTitle: (
+                <Image source={require('../../assets/img/logo/logo.png')} style={styles.logo} />
+            ),
+            headerStyle: {
+                height: 55
+            }
+        }
+    },
 });
 
 export const Tabs = TabNavigator({

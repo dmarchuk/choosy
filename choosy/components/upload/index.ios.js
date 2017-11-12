@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 
 import settings from '../../helpers/settings/index';
+import UUID from '../../helpers/uuid/index'
 
 const RNUploader = NativeModules.RNUploader;
 
@@ -79,7 +80,7 @@ export default class Upload extends React.Component {
     let files = this.state.images.map( (file) => {
       return {
         name: 'images',
-        filename: _generateUUID + '.png',
+        filename: UUID + '.png',
         filepath: file.uri,
         filetype: 'image/png',
       }
@@ -190,25 +191,14 @@ export default class Upload extends React.Component {
 
         <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
           {this.state.images.map((image) => {
-            return <Image key={_generateUUID()} source={{uri: image.uri}} style={styles.thumbnail} />
+            return <Image key={UUID()} source={{uri: image.uri}} style={styles.thumbnail} />
           })}
         </View>
 
       </View>
     );
   }
-
 }
-
-function _generateUUID() {
-    var d = new Date().getTime();
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = (d + Math.random()*16)%16 | 0;
-        d = Math.floor(d/16);
-        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-    });
-    return uuid;
-};
 
 
 var styles = StyleSheet.create({

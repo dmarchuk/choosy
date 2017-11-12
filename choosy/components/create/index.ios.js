@@ -11,6 +11,7 @@ import Camera from 'react-native-camera';
 
 export default class Create extends Component {
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <Camera
@@ -19,7 +20,12 @@ export default class Create extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+          <View style={styles.bottomBar}>
+            <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+            <Text style={styles.capture} onPress={() =>
+                navigate('Picker')
+            }>[UPLOAD]</Text>
+            </View>
         </Camera>
       </View>
     );
@@ -44,6 +50,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center'
   },
+  bottomBar: {
+    flexDirection: 'row'
+  },
   capture: {
     flex: 0,
     backgroundColor: '#fff',
@@ -51,7 +60,7 @@ const styles = StyleSheet.create({
     color: '#000',
     padding: 10,
     margin: 40
-  }
+  },
 });
 
 module.exports = Create;

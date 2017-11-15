@@ -6,7 +6,6 @@ import { TabNavigator, StackNavigator } from 'react-navigation';
 
 import Home from '../home/index.ios';
 import Search from '../search/index.ios';
-import Upload from '../upload/index.ios';
 import Create from "../create/index.ios";
 import Picker from "../picker/index.ios";
 
@@ -71,7 +70,7 @@ export const Tabs = TabNavigator({
         },
     },
     Voted: {
-        screen: Upload,
+        screen: Search,
         navigationOptions: {
             tabBarLabel: 'Voted',
             tabBarIcon: ({tintColor}) => <Icon name="touch-app" size={25} color={tintColor}/>

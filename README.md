@@ -7,7 +7,9 @@ The frontend of the app is currently not set up to work with any working API, so
 
 ## Dependencies
 - `NodeJS` and `npm`
-- `react-native-cli` (if you don't have it installed, just run `npm install -g react-native-cli`)
+- `react-native-cli`
+  - if you don't have it installed, just run `npm install -g react-native-cli`
+  - in case you run into issues with permissions, try running the command with `sudo`
 
 # How do I run the app?
 1. Clone this repository.

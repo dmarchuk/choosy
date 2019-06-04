@@ -3,7 +3,7 @@ Repository for hobby project of instagram clone with possibility to generate cho
 
 # Disclaimer
 
-The frontend of the app is currently not set up to work with any working API, so listing posts, creating posts and voting on posts will not actually be sent to server. Current state of this codebase is not meant to be used in production, but rather should be more of an inspiration and simple showcase of react native application. Main points of interest of this repo are in `choosy/choosy/components/`
+The frontend of the app is currently not set up to work with any working API, so listing posts, creating posts and voting on posts will not actually be sent to server. Current state of this codebase is not meant to be used in production, but should rather be more of an inspiration and simple showcase of react native application. Main points of interest of this repo are in `choosy/choosy/components/`
 
 ## Dependencies
 - `NodeJS` and `npm`
